@@ -54,7 +54,6 @@ class munki {
     $docroot          = "/usr/local/html"
     
     include stdlib
-    include defines
     include firewall_linux
     include munki::dirs
     include munki::share

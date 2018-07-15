@@ -20,7 +20,7 @@ class munki::share {
   $repositories.each |$locale| {
     samba::server::share { $locale:
       comment     => 'Munkirepo share',
-      path        => $docroot/munki/$locale,
+      path        => "$docroot/munki/$locale",
       guest_ok    => false,
       browsable   => false,
       writable    => true,

@@ -43,10 +43,9 @@
 # Copyright 2018 Miikka Valkeapää, unless otherwise noted.
 #
 class munki {
-  $munkiserver = lookup(munki::server)
-  $munkiclient = lookup(munki::client)
+  $mode = lookup(munki::mode)
 
-  if $munkiserver == true {
+  if $mode == server {
     $sambauser        = lookup(munki::sambauser)
     $sambapassword    = lookup(munki::sambapassword)
     $repositories     = lookup(munki::repositories)
@@ -62,11 +61,11 @@ class munki {
     include munki::firewall
   }
 
-  if $munkiclient == true {
+  if $mode == client {
     $munkitools 		= lookup(munki::munkitools)
     $appleupdatesonly		= lookup(munki::appleupdatesonly)
     $installappleupdates	= lookup(munki::installappleupdates)
-    $munkirepo 			= lookup(munki::munkirepo)
+    $munkirepo                  = lookup(munki::munkirepo)
 
     include munki::client
   }
